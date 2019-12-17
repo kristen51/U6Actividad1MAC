@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package petrerkingdead;
+
 import java.util.Scanner;
 /**
  *
@@ -19,6 +20,8 @@ public class PetrerkingDead {
         System.out.println("Introduce el nº de vidas");
         
         int vidas = lector.nextInt();
+        
+        int[][] mapa == crearCa
         
         
         
