@@ -15,15 +15,75 @@ public class Zombies {
 
     private static final char SIMBOLO_ZOMBIES = 'Z';
 
-    public static int[] posicionInicialZombies(int x, int y) {
-
-        int[] posicionZombie = {x, y};
+    public static int [] posicionInicialZombiesRandom(int[][] mapa) {
+        
+        Random random = new Random();
+        int posicionZombie[] = new int[2];
+        
+        do{
+        
+        posicionZombie[0] = random.nextInt(17);
+        
+        posicionZombie[1] = random.nextInt(16);
+        
+        }while((Casillas.hayMuro(mapa, posicionZombie[0], posicionZombie[1])));
+       
 
         return posicionZombie;
 
     }
 
-    public static char mueveATodosLosZombies() {
+    public static int [] mueveATodosLosZombies(int[][] mapa, int[]posicionZombie) {
+        
+        
+        char movimiento = mueveZombiesAlAzar();
+        
+        if (movimiento == 'w') {
+
+            if (!Casillas.hayMuro(mapa, posicionZombie[0]-1, posicionZombie[1])) {
+                    posicionZombie[0]--;
+                   
+            } else {
+                    System.out.println("Hay un muro en tu camino y pierdes el turno");
+                    
+                }
+
+            }
+
+        else if (movimiento == 's') {
+
+            if (!Casillas.hayMuro(mapa, posicionZombie[0]+1, posicionZombie[1])) {
+                    posicionZombie[0]++;
+            } else {
+                    System.out.println("Hay un muro en tu camino y pierdes el turno");
+                    
+                }
+
+            }
+        else if (movimiento == 'a') {
+
+            if (!Casillas.hayMuro(mapa, posicionZombie[0], posicionZombie[1]-1)) {
+                    posicionZombie[1]--;
+            } else {
+                    System.out.println("Hay un muro en tu camino y pierdes el turno");
+                    
+                }
+
+            }
+        else if (movimiento == 'd') {
+
+            if (!Casillas.hayMuro(mapa, posicionZombie[0], posicionZombie[1]+1)) {
+                    posicionZombie[1]++;
+            }else {
+                    System.out.println("Hay un muro en tu camino y pierdes el turno");
+                    
+                }
+            }
+
+        return posicionZombie;
+    }
+    
+    public static char mueveZombiesAlAzar() {
 
         Random random = new Random();
 
@@ -60,6 +120,9 @@ public class Zombies {
 
         return movimiento;
 
-    }
-
+        }
 }
+
+
+
+

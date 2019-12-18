@@ -43,7 +43,7 @@ public class Casillas {
         int nada = TIPO_VACIA;
         
         
-        int[][] casillas = new int[][]{
+        int[][] mapa = new int[][]{
             {lim,lim,lim,lim,lim,lim,lim,lim,lim,lim,lim,lim,lim,lim,lim,lim},
             {lim,item,item,item,nada,nada,nada,nada,nada,nada,nada,nada,nada,nada,item,lim},
             {lim,item,lim,lim,item,lim,lim,lim,item,item,item,lim,lim,lim,item,lim},
@@ -63,7 +63,7 @@ public class Casillas {
             {lim,lim,lim,lim,lim,lim,lim,lim,lim,lim,lim,lim,lim,lim,lim,lim}
         };
         
-        return casillas;
+        return mapa;
   
     
     
@@ -72,30 +72,52 @@ public class Casillas {
     
     
     
-    public static void hayItem(int [][] casillas, int x, int y){
+    public static boolean hayItem(int [][] mapa, int x, int y){
     
+        boolean hayItem = false;
+        
+        if(mapa[x][y]== TIPO_ITEM){
+            hayItem = true;
+        }
     
+        return hayItem;
+    
+    }
+    
+    public static boolean hayMuro(int [][] mapa, int x, int y){
+    
+        boolean hayMuro = false;
+        
+        if(mapa[x][y]== TIPO_LIMITE){
+            hayMuro = true;
+        }
+    
+        return hayMuro;
+    
+    }
+    
+    public static int [][] vaciaCasilla(int [][] mapa, int x, int y){
+    
+        mapa[x][y] = TIPO_VACIA;
+        
+        return mapa;
     
     
     
     }
-    public static void vaciaCasilla(int [][] casillas, int x, int y){
-    
-    
-    
-    
-    
-    }
-    public static void casillaATexto(int [][] casillas, int x, int y){
+    public static void casillaATexto(int [][] mapa, int x, int y){
         
         
-        switch(casillas[x][y]){
+        switch(mapa[x][y]){
         
-            case 1:System.out.println(" ");
+            case 1:System.out.print(" ");
             break;
-            case 2:System.out.println("\"");
+            
+            case 2:System.out.print("\"");
             break;
-            case 3:System.out.println(".");
+            
+            case 3:System.out.print(".");
+            break;
            
         }
 

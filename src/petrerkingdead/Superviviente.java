@@ -5,6 +5,8 @@
  */
 package petrerkingdead;
 
+import java.util.Scanner;
+
 /**
  *
  * @author cicloT
@@ -17,52 +19,94 @@ public class Superviviente {
 
         int[] posicionSuperviviente = new int[2];
 
-        posicionSuperviviente[0] = 2;
-        posicionSuperviviente[1] = 3;
+        posicionSuperviviente[0] = 1;
+        posicionSuperviviente[1] = 5;
 
         return posicionSuperviviente;
 
     }
 
-    public static int[] mueveSuperviviente(int[] posicionSuperviviente, int[][] mapa, char movimiento) {
+    public static int[] mueveSuperviviente(int[] posicionSuperviviente, int[][] mapa) {
 
-        if (movimiento == 'w') {
+        Scanner lector = new Scanner(System.in);
+
+        char movimiento;
+        
+
+        do {
             
+            movimiento = lector.next().charAt(0);
+
+            if (movimiento == 'w') {
+
+                if (!Casillas.hayMuro(mapa, posicionSuperviviente[0]-1, posicionSuperviviente[1])) {
+                    posicionSuperviviente[0]--;
+                   
+                } else {
+                    System.out.println("Hay un muro en tu camino y pierdes el turno");
+                    
+                }
+
+            }
+
+            else if (movimiento == 's') {
+
+                if (!Casillas.hayMuro(mapa, posicionSuperviviente[0]+1, posicionSuperviviente[1])) {
+                    posicionSuperviviente[0]++;
+                } else {
+                    System.out.println("Hay un muro en tu camino y pierdes el turno");
+                    
+                }
+
+            }
+            else if (movimiento == 'a') {
+
+                if (!Casillas.hayMuro(mapa, posicionSuperviviente[0], posicionSuperviviente[1]-1)) {
+                    posicionSuperviviente[1]--;
+                } else {
+                    System.out.println("Hay un muro en tu camino y pierdes el turno");
+                    
+                }
+
+            }
+            else if (movimiento == 'd') {
+
+                if (!Casillas.hayMuro(mapa, posicionSuperviviente[0], posicionSuperviviente[1]+1)) {
+                    posicionSuperviviente[1]++;
+                } else {
+                    System.out.println("Hay un muro en tu camino y pierdes el turno");
+                    
+                }
+
+            }
             
-            if (posicionSuperviviente[0]!=1) {
-                posicionSuperviviente[0]--;        
-            }else{System.out.println("Hay un muro en tu camino");}
-            
+            else{System.out.print("Formato incorrecto\nIntroduzca una opción válida: ");}
 
-        }
-
-        if (movimiento == 's') {
-            
-            if (posicionSuperviviente[1]!= mapa.length - 2) {
-                posicionSuperviviente[0]++;      
-            }else{System.out.println("Hay un muro en tu camino");}
-           
-
-        }
-        if (movimiento == 'a') {
-
-            if (posicionSuperviviente[1]!=1) {
-                posicionSuperviviente[1]--;        
-            }else{System.out.println("Hay un muro en tu camino");}
-            
-
-        }
-        if (movimiento == 'd') {
-            
-            if (posicionSuperviviente[1]!= mapa[0].length -2) {
-                
-                posicionSuperviviente[0]++;       
-            }else{System.out.println("Hay un muro en tu camino");}
-
-        }
+        } while (!formatoMovimientoCorrecto(movimiento));
 
         return posicionSuperviviente;
 
     }
     
+    
+    
+    
+    public static boolean formatoMovimientoCorrecto(char movimiento){
+        
+        boolean formatoCorrecto = false;
+        
+        if(movimiento == 'w' || movimiento == 's' || movimiento == 'a' || movimiento == 'd'){
+        
+            formatoCorrecto = true;
+        
+        }
+    
+    
+    
+    
+    
+        return formatoCorrecto;
+    
+    }
+
 }

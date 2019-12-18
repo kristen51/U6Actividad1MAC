@@ -16,11 +16,9 @@ public class TestZombies {
 
     public static void main(String[] args) {
 
-        Random random = new Random();
-
-        int num = random.nextInt(4);
-
-        System.out.println(num);
+        int[][] array = new int[6][9];
+        
+        System.out.println(array[1].length);
 
     }
 
