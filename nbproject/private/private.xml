@@ -5,12 +5,12 @@
         <group>
             <file>file:/home/cicloT/NetBeansProjects/U6Actividad1/src/petrerkingdead/Partida.java</file>
             <file>file:/home/cicloT/NetBeansProjects/U6Actividad1/src/petrerkingdead/Zombies.java</file>
-            <file>file:/home/cicloT/NetBeansProjects/U6Actividad1/src/petrerkingdead/U6Actividad1.java</file>
+            <file>file:/home/cicloT/NetBeansProjects/U6Actividad1/src/testpetrerkingdead/TestPartida.java</file>
             <file>file:/home/cicloT/NetBeansProjects/U6Actividad1/src/petrerkingdead/PetrerkingDead.java</file>
             <file>file:/home/cicloT/NetBeansProjects/U6Actividad1/src/petrerkingdead/Superviviente.java</file>
             <file>file:/home/cicloT/NetBeansProjects/U6Actividad1/src/testpetrerkingdead/TestZombies.java</file>
-            <file>file:/home/cicloT/NetBeansProjects/U6Actividad1/src/petrerkingdead/Casillas.java</file>
             <file>file:/home/cicloT/NetBeansProjects/U6Actividad1/src/testpetrerkingdead/TestCasillas.java</file>
+            <file>file:/home/cicloT/NetBeansProjects/U6Actividad1/src/petrerkingdead/Casillas.java</file>
         </group>
     </open-files>
 </project-private>
