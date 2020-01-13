@@ -32,53 +32,90 @@ public class Zombies {
         return posicionZombie;
 
     }
+    
+    //Mueve los zombies al azar
 
-    public static int [] mueveATodosLosZombies(int[][] mapa, int[]posicionZombie) {
+    public static int [] mueveATodosLosZombies(int[][] mapa, int[]posicionZombie, int [][]posicionZombies, int i) {
         
+        int  intentosAleatorios = 0;
+        boolean exito = false;
         
+        //El zombie intenta moverse al azar 3 veces
+        do{
         char movimiento = mueveZombiesAlAzar();
         
         if (movimiento == 'w') {
 
-            if (!Casillas.hayMuro(mapa, posicionZombie[0]-1, posicionZombie[1])) {
+            if (!Casillas.hayMuro(mapa, posicionZombie[0]-1, posicionZombie[1]) 
+                && !Casillas.hayZombie(mapa, posicionZombies, posicionZombie[0]-1, posicionZombie[1], i)) 
+            {
                     posicionZombie[0]--;
+                    exito = true;
                    
-            } else {
-                    System.out.println("Hay un muro en tu camino y pierdes el turno");
-                    
-                }
+            } else{intentosAleatorios++;}
 
             }
 
         else if (movimiento == 's') {
 
-            if (!Casillas.hayMuro(mapa, posicionZombie[0]+1, posicionZombie[1])) {
+            if (!Casillas.hayMuro(mapa, posicionZombie[0]+1, posicionZombie[1])&& !Casillas.hayZombie(mapa, posicionZombies, posicionZombie[0]+1, posicionZombie[1], i)) {
                     posicionZombie[0]++;
-            } else {
-                    System.out.println("Hay un muro en tu camino y pierdes el turno");
+                    exito = true;
                     
-                }
+            } else{intentosAleatorios++;} 
 
             }
         else if (movimiento == 'a') {
 
-            if (!Casillas.hayMuro(mapa, posicionZombie[0], posicionZombie[1]-1)) {
+            if (!Casillas.hayMuro(mapa, posicionZombie[0], posicionZombie[1]-1)&& !Casillas.hayZombie(mapa, posicionZombies, posicionZombie[0], posicionZombie[1]-1, i)) {
                     posicionZombie[1]--;
-            } else {
-                    System.out.println("Hay un muro en tu camino y pierdes el turno");
-                    
-                }
+                    exito = true;
+            } else{intentosAleatorios++;}
 
             }
         else if (movimiento == 'd') {
 
-            if (!Casillas.hayMuro(mapa, posicionZombie[0], posicionZombie[1]+1)) {
+            if (!Casillas.hayMuro(mapa, posicionZombie[0], posicionZombie[1]+1)&& !Casillas.hayZombie(mapa, posicionZombies, posicionZombie[0], posicionZombie[1]+1, i)) {
                     posicionZombie[1]++;
-            }else {
-                    System.out.println("Hay un muro en tu camino y pierdes el turno");
-                    
-                }
+                    exito = true;
+            }else{intentosAleatorios++;}
+            
             }
+        
+        }while(intentosAleatorios != 3 && exito == false );
+        
+        // Si ninguno de los 3 movimientos aleatorios tiene exito, el zombie intentara moverse a alguna de las cuatro direcciones en orden arriba abajo izquierda derecha
+        
+        if(exito == false){
+        
+            if(!Casillas.hayMuro(mapa, posicionZombie[0]-1, posicionZombie[1]) 
+                && !Casillas.hayZombie(mapa, posicionZombies, posicionZombie[0]-1, posicionZombie[1], i))
+            {
+            
+                posicionZombie[0]--;
+            
+            }
+            
+            else if(!Casillas.hayMuro(mapa, posicionZombie[0]+1, posicionZombie[1])
+                    && !Casillas.hayZombie(mapa, posicionZombies, posicionZombie[0]+1, posicionZombie[1], i))
+            {
+                
+                posicionZombie[0]++;
+            
+            }
+            
+            else if(!Casillas.hayMuro(mapa, posicionZombie[0], posicionZombie[1]-1)&& !Casillas.hayZombie(mapa, posicionZombies, posicionZombie[0], posicionZombie[1]-1, i))
+            {
+                posicionZombie[1]--;
+            }
+            
+            else if(!Casillas.hayMuro(mapa, posicionZombie[0], posicionZombie[1]+1)&& !Casillas.hayZombie(mapa, posicionZombies, posicionZombie[0], posicionZombie[1]+1, i))
+            {
+                posicionZombie[1]++;
+            }
+
+        
+        }
 
         return posicionZombie;
     }

@@ -41,10 +41,7 @@ public class Partida {
     
     }
     
-    public static void mueveATodosPersonajes(int [][] mapa,char movimiento, int[] posicionSuperviviente, int [][][] posicionZombies){
-    
-    
-    }
+  
     
     public static boolean partidaGanada(int [][] mapa){
         
@@ -60,21 +57,13 @@ public class Partida {
                 
             }
         }
+        if(quedanItems==false){System.out.println("Has ganado!!!");}
         
         
         return !quedanItems;
     
     
     }
-    public static void partidaPerdida(){
-    
-    
-    
-    
-    }
-    
-    
-    
-    
-    
+  
+   
 }

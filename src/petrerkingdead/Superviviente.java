@@ -25,6 +25,8 @@ public class Superviviente {
         return posicionSuperviviente;
 
     }
+    
+    //Mueve al superviviente si no hay un muro en la direccion en la que se mueve
 
     public static int[] mueveSuperviviente(int[] posicionSuperviviente, int[][] mapa) {
 
@@ -100,11 +102,7 @@ public class Superviviente {
             formatoCorrecto = true;
         
         }
-    
-    
-    
-    
-    
+
         return formatoCorrecto;
     
     }

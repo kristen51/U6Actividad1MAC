@@ -15,6 +15,10 @@ public class U6Actividad1 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
+        PetrerkingDead programa = new PetrerkingDead();
+        
+        programa.main(args);
         // TODO code application logic here
     }
     

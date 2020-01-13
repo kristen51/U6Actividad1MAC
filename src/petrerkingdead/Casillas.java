@@ -96,6 +96,26 @@ public class Casillas {
     
     }
     
+    public static boolean hayZombie(int [][] mapa, int [][]posicionZombies , int x, int y, int zombieActual){
+    
+        boolean hayZombie = false;
+        
+        
+        for (int i = 0; i < 3; i++) {
+            
+            if((x == posicionZombies[i][0] && y == posicionZombies[i][1]) && i!= zombieActual){
+                hayZombie = true;
+        }
+            
+        }
+       
+    
+        return hayZombie;
+    
+    }
+    
+    
+    
     public static int [][] vaciaCasilla(int [][] mapa, int x, int y){
     
         mapa[x][y] = TIPO_VACIA;
